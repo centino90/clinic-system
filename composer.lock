@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "4cfe6c9b9e273b98b1fc76e4c32ca1b1",
+    "content-hash": "abe66d1aac15224b5bdb5bf9413cd7d7",
     "packages": [
         {
             "name": "akaunting/laravel-money",
@@ -73,6 +73,63 @@
                 "source": "https://github.com/akaunting/laravel-money/tree/3.1.2"
             },
             "time": "2022-07-27T08:16:36+00:00"
+        },
+        {
+            "name": "awcodes/filament-quick-create",
+            "version": "v1.0.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/awcodes/filament-quick-create.git",
+                "reference": "4514950b6fddf869540477358a5475c15eba20fd"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/awcodes/filament-quick-create/zipball/4514950b6fddf869540477358a5475c15eba20fd",
+                "reference": "4514950b6fddf869540477358a5475c15eba20fd",
+                "shasum": ""
+            },
+            "require": {
+                "filament/filament": "^2.0",
+                "php": "^8.0.2",
+                "spatie/laravel-package-tools": "^1.9.2"
+            },
+            "type": "package",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "FilamentQuickCreate\\FilamentQuickCreateServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "FilamentQuickCreate\\": "src/",
+                    "FilamentQuickCreate\\Database\\Seeders\\": "database/seeders/",
+                    "FilamentQuickCreate\\Database\\Factories\\": "database/factories/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Adam Weston",
+                    "email": "awcodes1@gmail.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Plugin for Filament Admin that adds a dropdown menu to the header to quickly create new items.",
+            "keywords": [
+                "filament",
+                "framework",
+                "laravel"
+            ],
+            "support": {
+                "issues": "https://github.com/awcodes/filament-quick-create/issues",
+                "source": "https://github.com/awcodes/filament-quick-create/tree/v1.0.5"
+            },
+            "time": "2022-09-08T14:02:45+00:00"
         },
         {
             "name": "bezhansalleh/filament-shield",
