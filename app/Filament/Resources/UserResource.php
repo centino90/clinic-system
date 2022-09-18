@@ -41,7 +41,15 @@ class UserResource extends Resource
                 //
             ])
             ->headerActions([
-                ExportAction::make()
+                ExportAction::make()->exports([
+                    ExcelExport::make()
+                        ->askForFilename()
+                        ->askForWriterType()
+                        ->withColumns([
+                            Column::make('name'),
+                            Column::make('email'),
+                        ])
+                ])
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
