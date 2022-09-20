@@ -17,12 +17,29 @@ use pxlrbt\FilamentExcel\Actions\Tables\ExportAction;
 use pxlrbt\FilamentExcel\Columns\Column;
 use pxlrbt\FilamentExcel\Exports\ExcelExport;
 use pxlrbt\FilamentExcel\Actions\Pages\ExportAction as PageExportAction;
+use Illuminate\Database\Eloquent\Model;
 
 class UserResource extends Resource
 {
     protected static ?string $model = User::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-collection';
+
+    protected static ?string $recordTitleAttribute = 'email';
+
+    protected static ?string $navigationGroup = 'Access Management';
+
+    public static function getGlobalSearchResultTitle(Model $record): string
+    {
+        return $record->email;
+    }
+
+    public static function getGlobalSearchResultDetails(Model $record): array
+    {
+        return [
+
+        ];
+    }
 
     public static function form(Form $form): Form
     {
