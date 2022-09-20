@@ -37,7 +37,7 @@ jobs:
       # create databases
       # - run: mysql -h 127.0.0.1 -u root -e "create database testdb"
 
-      - run: sudo docker-php-ext-install zip
+      # - run: sudo docker-php-ext-install zip
 
       # Download and cache dependencies
       - restore_cache:
@@ -63,6 +63,8 @@ jobs:
           paths:
             - node_modules
 
+      - run: php artisan key:generate
+      
       # prepare the database
       # - run: touch storage/testing.mysql
       - run: php artisan migrate --env=testing --force
