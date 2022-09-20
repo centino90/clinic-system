@@ -17,11 +17,11 @@ jobs:
       # documented at https://circleci.com/docs/2.0/circleci-images/
       # Using the RAM variation mitigates I/O contention
       # for database intensive operations.
-      - image: cimg/mysql:8.0
+      - image: cimg/postgres:14.5.0
         environment:
-          MYSQL_ROOT_PASSWORD: ""
-          MYSQL_DATABASE: test_mysql_db
-
+          POSTGRES_USER: root
+          POSTGRES_DB: circle_test
+          POSTGRES_PASSWORD: ""
       #
       # - image: redis:2.8.19
 
@@ -58,8 +58,8 @@ jobs:
             - node_modules
 
       # prepare the database
-      - run: touch storage/testing.mysql
-      - run: php artisan migrate --env=testing --database=test_mysql_db --force
+      # - run: touch storage/testing.mysql
+      - run: php artisan migrate --env=testing --database=circle_test --force
 
       # run tests with phpunit or codecept
       #- run: ./vendor/bin/phpunit
