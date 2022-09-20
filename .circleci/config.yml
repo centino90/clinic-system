@@ -11,24 +11,23 @@ jobs:
     docker:
       # Specify the version you desire here
       - image: cimg/php:8.1.9-browsers
-
-      # Specify service dependencies here if necessary
-      # CircleCI maintains a library of pre-built images
-      # documented at https://circleci.com/docs/2.0/circleci-images/
-      # Using the RAM variation mitigates I/O contention
-      # for database intensive operations.
-      - image: cimg/postgres:13.8-postgis
+      - image: cimg/mysql:8.0
         environment:
-          POSTGRES_USER: root
-          POSTGRES_DB: circle_test
-          POSTGRES_PASSWORD: ""
-      #
-      # - image: redis:2.8.19
+          MYSQL_ALLOW_EMPTY_PASSWORD: yes
+          MYSQL_ROOT_PASSWORD: ''
+          
+    working_directory: ~/repo
 
-    # Add steps to the job
-    # See: https://circleci.com/docs/2.0/configuration-reference/#steps
     steps:
       - checkout
+      - run:
+          name: Wait for Database Connection
+          # preinstalled in circleci/* docker image
+          command: dockerize -wait tcp://localhost:3306 -timeout 1m
+      #install mysql client
+      - run: sudo apt-get install mysql-client
+      # create databases
+      - run: mysql -h 127.0.0.1 -u root -e "create database testdb"
 
       - run: sudo apt update # PHP CircleCI 2.0 Configuration File# PHP CircleCI 2.0 Configuration File sudo apt install zlib1g-dev libsqlite3-dev
       - run: sudo docker-php-ext-install zip
@@ -59,7 +58,7 @@ jobs:
 
       # prepare the database
       # - run: touch storage/testing.mysql
-      - run: php artisan migrate --env=testing --database=circle_test --force
+      - run: php artisan migrate --env=testing --database=testdb --force
 
       # run tests with phpunit or codecept
       #- run: ./vendor/bin/phpunit
