@@ -39,7 +39,7 @@ jobs:
 
       # - run: sudo docker-php-ext-install zip
 
-      - run: mv .env.testing .env
+      - run: mv .env.example .env
 
       # Download and cache dependencies
       - restore_cache:
