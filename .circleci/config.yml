@@ -22,10 +22,10 @@ jobs:
 
     steps:
       - checkout
-      - run:
-          name: Wait for Database Connection
-          # preinstalled in circleci/* docker image
-          command: dockerize -wait tcp://localhost:3306 -timeout 1m
+      # - run:
+      #     name: Wait for Database Connection
+      #     # preinstalled in circleci/* docker image
+      #     command: dockerize -wait tcp://localhost:3306 -timeout 1m
 
       - run: sudo apt update # PHP CircleCI 2.0 Configuration File# PHP CircleCI 2.0 Configuration File sudo apt install zlib1g-dev libsqlite3-dev
 
