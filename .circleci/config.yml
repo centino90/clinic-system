@@ -15,8 +15,8 @@ jobs:
           DB_DATABASE: testdb
       - image: cimg/mysql:8.0
         environment:
-          MYSQL_ALLOW_EMPTY_PASSWORD: yes
           MYSQL_ROOT_PASSWORD: ''
+          MYSQL_DATABASE: testdb
           
     working_directory: ~/repo
 
