@@ -24,7 +24,7 @@ jobs:
           name: Wait for Database Connection
           # preinstalled in circleci/* docker image
           command: dockerize -wait tcp://localhost:3306 -timeout 1m
-          
+
       - run: sudo apt update # PHP CircleCI 2.0 Configuration File# PHP CircleCI 2.0 Configuration File sudo apt install zlib1g-dev libsqlite3-dev
 
       #install mysql client
@@ -60,7 +60,7 @@ jobs:
 
       # prepare the database
       # - run: touch storage/testing.mysql
-      - run: php artisan migrate --env=testing --database=testdb --force
+      - run: php artisan migrate --env=testing --database=mysql://localhost:3306/testdb --force
 
       # run tests with phpunit or codecept
       #- run: ./vendor/bin/phpunit
