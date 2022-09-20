@@ -24,7 +24,10 @@
     - updated navigation group sorting
     - updated navigation grouping of items
 - added 3 issues
-
+- setup main and merge branch rules
+    - disable direct push without pull request
+    - pull requests must be done from a separate branch pointing to merge
+    - pull requests must be approved by the admin before it gets merged
 
 ## Notable Plugins Used
 - "pxlrbt/filament-excel": "^1.1",
